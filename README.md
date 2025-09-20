@@ -1,99 +1,133 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Loja do Seu Manoel - API de Empacotamento de Pedidos
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este projeto consiste em uma API REST para processar pedidos de uma loja de jogos, identificando a caixa ideal para embalar os produtos com base nas suas dimensões.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## Processo Seletivo L2Code
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Este projeto foi desenvolvido para o processo seletivo da empresa L2Code.  
+Estou à disposição para quaisquer esclarecimentos que forem necessários.
 
-## Project setup
+---
 
-```bash
-$ npm install
+## O que foi desenvolvido
+
+- Endpoint POST `/pedido` para receber um conjunto de pedidos contendo produtos e suas dimensões.
+- Lógica para verificar o encaixe dos produtos nas caixas disponíveis.
+- Retorno estruturado no formato especificado com a indicação da caixa usada para cada pedido.
+- Validação básica e documentação da API via Swagger.
+- Testes unitários para serviço e controller.
+- Consultas SQL para o exercício 2 (Horários de Aula) isoladas em um arquivo de Node.js para uso separado.
+
+---
+
+## Como rodar localmente
+
+### Pré-requisitos
+
+- Docker e Docker Compose instalados
+- Node.js (para rodar localmente sem Docker)
+- Banco Postgres configurado (conforme `.env`)
+
+### Passos para rodar
+
+1. Clone o repositorio no seu ambiente local
+
+```text
+git clone git@github.com:victorwariss/avaliacaoL2.git
 ```
 
-## Compile and run the project
+2. Configure o arquivo `.env` com os dados do banco (host, usuário, senha, db)
 
-```bash
-# development
-$ npm run start
+3. Suba o ambiente Docker
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```text
+docker compose up --build
 ```
 
-## Run tests
+4. API estará disponível em:
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```text
+http://localhost:3000
 ```
 
-## Deployment
+5. Acesse a documentação Swagger e interface de testes em:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g mau
-$ mau deploy
+```text
+http://localhost:3000/api
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+## Como usar o endpoint `/pedido`
 
-Check out a few resources that may come in handy when working with NestJS:
+Envie um POST com o JSON no formato:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```json
+{
+  "pedidos": [
+    {
+      "pedido_id": 1,
+      "produtos": [
+        {
+          "produto_id": "PS5",
+          "dimensoes": {
+            "altura": 40,
+            "largura": 10,
+            "comprimento": 25
+          }
+        },
+        {
+          "produto_id": "Volante",
+          "dimensoes": {
+            "altura": 40,
+            "largura": 30,
+            "comprimento": 30
+          }
+        }
+      ]
+    }
+  ]
+}
+```
 
-## Support
+Resposta no formato:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```json
+{
+  "pedidos": [
+    {
+      "pedido_id": 1,
+      "caixas": [
+        {
+          "caixa_id": "Caixa 1",
+          "produtos": ["PS5", "Volante"]
+        }
+      ]
+    }
+  ]
+}
+```
 
-## Stay in touch
+---
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Testes
 
-## License
+- Para rodar os testes unitários:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```text
+npm run test
+```
+
+---
+
+## Consultas SQL - Exercício 2
+
+Um arquivo isolado com as consultas SQL para os horários de aula está disponível em
+
+```text
+src/sql/consultas-horarios.js
+```
+
+que pode ser usado para execução externa sem impactar a API.
